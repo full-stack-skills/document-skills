@@ -1,0 +1,22 @@
+{
+  "name": "document-skills",
+  "version": "1.0.0",
+  "description": "Documentation skills — Mermaid, PlantUML, ProcessOn, API docs, full-stack-doc",
+  "author": {
+    "name": "PartMeAI",
+    "email": "partmeai@gmail.com"
+  },
+  "homepage": "https://github.com/full-statck-skills/document-skills",
+  "repository": "https://github.com/full-statck-skills/document-skills",
+  "source": "./",
+  "skills": [
+    "./skills/api-doc-generator",
+    "./skills/doc-coauthoring",
+    "./skills/full-stack-doc",
+    "./skills/mermaid",
+    "./skills/plantuml",
+    "./skills/processon-diagram-generator",
+    "./skills/processon-mindmap",
+    "./skills/technical-blog-doc",
+  ]
+}
