@@ -1,7 +1,7 @@
 {
   "name": "document-skills",
   "version": "1.0.0",
-  "description": "Documentation skills — Mermaid, PlantUML, ProcessOn, API docs, full-stack-doc",
+  "description": "Documentation skills",
   "author": {
     "name": "PartMeAI",
     "email": "partmeai@gmail.com"
@@ -17,6 +17,6 @@
     "./skills/plantuml",
     "./skills/processon-diagram-generator",
     "./skills/processon-mindmap",
-    "./skills/technical-blog-doc",
+    "./skills/technical-blog-doc"
   ]
 }
