@@ -344,3 +344,26 @@ api documentation, api docs, generate api documentation, create api docs, scan i
 接口文档, API文档, 生成接口文档, 创建接口文档, 扫描接口, 接口文档生成, API文档生成, 接口文档生成器, 扫描Controller, 提取接口信息, 接口文档模板
 
 **IMPORTANT**: All keywords must include "接口文档" (API documentation) or "API" to avoid false triggers. Generic terms like "生成文档" (generate documentation) without "接口" or "API" should NOT trigger this skill.
+
+## 能力边界
+
+### ✅ 适用场景
+- 当你需要使用此技能对应的技术栈时
+- 当项目需要遵循最佳实践时
+- 当需要快速上手或深入理解核心概念时
+
+### ⚠️ 需要注意
+- 复杂业务逻辑需要结合具体场景调整
+- 性能优化需要根据实际数据量评估
+
+### ❌ 不适用场景
+- 不相关的技术栈或框架
+- 需要完全自定义的特殊场景
+
+## 常见陷阱 (Gotchas)
+
+1. **版本兼容性**：注意框架版本与依赖库的兼容性，不同版本 API 可能有差异
+2. **配置文件格式**：配置文件格式错误是最常见的问题，建议使用编辑器的语法检查
+3. **环境变量**：确保所有必要的环境变量已正确设置，敏感信息不要硬编码
+4. **依赖冲突**：多版本共存时注意依赖冲突，使用 lock 文件锁定版本
+5. **性能陷阱**：大数据量场景下注意性能优化，避免 N+1 查询等常见问题
