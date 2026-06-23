@@ -6,8 +6,8 @@
     "name": "PartMeAI",
     "email": "partmeai@gmail.com"
   },
-  "homepage": "https://github.com/full-statck-skills/document-skills",
-  "repository": "https://github.com/full-statck-skills/document-skills",
+  "homepage": "https://github.com/full-stack-skills/document-skills",
+  "repository": "https://github.com/full-stack-skills/document-skills",
   "source": "./",
   "skills": [
     "./skills/api-doc-generator",
