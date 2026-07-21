@@ -1,50 +1,69 @@
 ---
 name: full-stack-doc
 description: >
-  Scaffolds, validates, and maintains PartMe/Octo-style product documentation
-  trees — 10 root-level docs, 7 per-version docs, and optional per-module
-  triplets (PRD / Stitch / UI) plus 5 delivery-phase docs. Provides ready-to-copy
-  Markdown templates with {Name}/{V} placeholders and inline authoring guidance.
-  Use when creating new product doc repositories, organizing partme-docs or Octo*
-  projects, auditing repo doc structures, or generating documentation scaffolding
-  — even if the user just says "set up docs", "create doc structure", "初始化文档",
-  "产品文档", or "写规划文档".
-metadata:
-  author: partme
-  version: "3.0"
-compatibility: Requires filesystem access for scaffolding and template copying.
+  Scaffold, adapt, validate, and maintain example-rich full-stack product documentation:
+  10 product-level documents, 7 version documents, optional module PRD/Stitch/UI
+  triplets, 5 delivery documents, and a detailed project README template family.
+  Use when users ask to initialize a documentation
+  repository, create product or version plans, write PRDs and architecture/UI documents,
+  preserve and adapt detailed examples, audit document structure, or improve an existing
+  product-docs tree, including Chinese requests such as 初始化文档、产品文档、写规划文档.
 ---
 
 # Product Documentation Standard (full-stack-doc v3.0)
 
-Enforces a fixed directory-and-naming convention for product documentation, aligned with the PartMe / Octo series. Ready-to-copy Markdown templates live under [`templates/`](templates/). Detailed file mappings and conventions in [`references/structure.md`](references/structure.md).
+Enforces a fixed directory-and-naming convention for product documentation, suitable for general product families. Ready-to-copy Markdown templates live under [`templates/`](templates/). Detailed file mappings and conventions in [`references/structure.md`](references/structure.md).
 
 ---
 
 ## 1. When to Use
 
 - Creating or initializing a product documentation repository
-- Scaffolding doc trees for Octo* or PartMe projects
-- Auditing or aligning existing repos against the PartMe doc standard
+- Scaffolding doc trees for product families or standalone products
+- Auditing or aligning existing repos against the product doc standard
 - Generating / renaming docs to match the naming convention
-- Aligning `partme-docs/` content with the template structure
+- Aligning `product-docs/` content with the template structure
 - Writing or expanding any of the 10 root-level planning documents
 
 ---
 
-## 2. Placeholders
+## 2. Start Here
+
+Before copying or editing templates, load only the references needed for the task:
+
+- Placeholder interpretation and secret handling: [`references/placeholder-protocol.md`](references/placeholder-protocol.md)
+- Product/version/module/delivery ownership: [`references/document-boundaries.md`](references/document-boundaries.md)
+- Optional architecture and product patterns: [`references/applicability.md`](references/applicability.md)
+- Reusable example identities and adaptation rules: [`references/example-profiles.md`](references/example-profiles.md)
+- Evidence-oriented completion criteria: [`references/quality-rubric.md`](references/quality-rubric.md)
+- Exact filenames and dependency map: [`references/structure.md`](references/structure.md)
+- Project README selection, evidence, bilingual, and preservation rules: [`references/readme-template-guide.md`](references/readme-template-guide.md)
+- Rust common template and optional domain-profile selector: [`templates/readme/rust-profiles/README.md`](templates/readme/rust-profiles/README.md)
+- Complete architecture template, evidence, and profile selection: [`references/architecture-template-guide.md`](references/architecture-template-guide.md)
+
+### 2.1 Placeholder Summary
 
 | Placeholder | Meaning | Example |
 |:---|:---|:---|
-| `{Name}` | Product / brand name | `OctoEcom`, `OpenMem` |
-| `{Name-Open}` | Open-source variant name (if dual-track) | `OpenEcom`, `OpenMem` |
-| `{V}` | Version directory name | `V1`, `V2` |
-| `{模块简称}` | Module short name | `登录页`, `设备中心` |
-| `{YYYY-MM-DD}` | Date placeholder | `2026-03-27` |
-| `{姓名}` | Author / reviewer name | `张三` |
-| `{组织}` | Organization name | `PartMe` |
+| `{{PRODUCT_NAME}}` | Product / brand name | `ExampleCommerce`, `ExampleMemory` |
+| `{{OPEN_SOURCE_NAME}}` | Open-source variant name (if dual-track) | `ExampleCommerce-Open`, `ExampleMemory-Open` |
+| `{{VERSION}}` | Version directory name | `V1`, `V2` |
+| `{{MODULE_NAME}}` | Module short name | `登录页`, `设备中心` |
+| `{{DATE}}` | Date placeholder | `2026-03-27` |
+| `{{OWNER}}` | Author / reviewer name | `张三` |
+| `{{ORGANIZATION}}` | Organization name | `ExampleOrg` |
+| `{{DOC_ROOT}}` | Documentation root | `product-docs/ExampleProduct` |
 
-Replace placeholders in **both filenames and content**. Root keeps one `6、` file. The old `6、详细功能清单` has been merged into `10、功能菜单与版本规划`.
+Replace double-brace placeholders in **both filenames and content**. Single-brace prompts such as `{例如：订单中心}` are authoring examples, not global tokens. Root keeps one `6、` file; the former detailed feature list is merged into `10、功能菜单与版本规划`.
+
+### 2.2 Adaptation Contract
+
+1. Inspect the target repository and collect confirmed facts before filling templates.
+2. Choose applicable sections; remove non-applicable dual-track, SaaS, DDD/COLA, Agent, CLI/IM, mobile, or enterprise examples.
+3. Keep rich examples as labeled examples, but never present them as facts about the target product.
+4. Label uncertain content as **推断**, **假设**, or **待确认** and attach evidence where possible.
+5. Preserve source examples when maintaining this skill; improve boundaries and labels instead of deleting depth.
+6. Name generated standalone architecture documents `*-Architecture.md` or `*-Architecture.zh_CN.md`; place component/version qualifiers before `-Architecture`.
 
 ---
 
@@ -53,31 +72,31 @@ Replace placeholders in **both filenames and content**. Root keeps one `6、` fi
 ### 3.1 Four-Layer Structure
 
 ```
-{产品名}/
-├── 1、{Name}-命名与品牌说明.md          ─┐
-├── 2、{Name}-术语表与词汇表.md          │
-├── 3、{Name}-市场与商业分析.md          │
-├── 4、{Name}-技术与可行性分析.md        │ Root (10) — 产品级，与版本无关
-├── 5、{Name}-技术方案与路线.md          │
-├── 6、{Name}-产品与版本规划.md          │
-├── 7、{Name}-领域模型设计.md            │
-├── 8、{Name}-系统架构设计.md            │
-├── 9、{Name}-视觉与交互DNA规范.md       │
-├── 10、{Name}-功能菜单与版本规划.md      ─┘
+{{PRODUCT_NAME}}/
+├── 1、{{PRODUCT_NAME}}-命名与品牌说明.md          ─┐
+├── 2、{{PRODUCT_NAME}}-术语表与词汇表.md          │
+├── 3、{{PRODUCT_NAME}}-市场与商业分析.md          │
+├── 4、{{PRODUCT_NAME}}-技术与可行性分析.md        │ Root (10) — 产品级，与版本无关
+├── 5、{{PRODUCT_NAME}}-技术方案与路线.md          │
+├── 6、{{PRODUCT_NAME}}-产品与版本规划.md          │
+├── 7、{{PRODUCT_NAME}}-领域模型设计.md            │
+├── 8、{{PRODUCT_NAME}}-Architecture.zh_CN.md      │
+├── 9、{{PRODUCT_NAME}}-视觉与交互DNA规范.md       │
+├── 10、{{PRODUCT_NAME}}-功能菜单与版本规划.md      ─┘
 │
 ├── V1/                                   ─┐
-│   ├── 1、{Name}-需求调研文档-V1.md      │
-│   ├── 2、{Name}-需求分析文档-V1.md      │
-│   ├── 3、{Name}-系统架构设计-V1.md      │ Version (7) — 版本级实施文档
-│   ├── 4、{Name}-功能与界面规划-V1.md    │
-│   ├── 5、{Name}-PRD文档-V1.md           │
-│   ├── 6、{Name}-功能菜单与版本规划-V1.md│
-│   ├── 7、{Name}-UI设计说明-V1.md        │
+│   ├── 1、{{PRODUCT_NAME}}-需求调研文档-V1.md      │
+│   ├── 2、{{PRODUCT_NAME}}-需求分析文档-V1.md      │
+│   ├── 3、{{PRODUCT_NAME}}-V1-Architecture.zh_CN.md│ Version (7) — 版本级实施文档
+│   ├── 4、{{PRODUCT_NAME}}-功能与界面规划-V1.md    │
+│   ├── 5、{{PRODUCT_NAME}}-PRD文档-V1.md           │
+│   ├── 6、{{PRODUCT_NAME}}-功能菜单与版本规划-V1.md│
+│   ├── 7、{{PRODUCT_NAME}}-UI设计说明-V1.md        │
 │   │                                     ─┘
 │   ├── 1、{模块A}/                       ─┐
-│   │   ├── {Name}-{模块A}-PRD-V1.md      │ Module (3) — 可选，按模块
-│   │   ├── {Name}-{模块A}-Stitch设计提示词.md │
-│   │   └── {Name}-{模块A}-UI设计说明-V1.md    ─┘
+│   │   ├── {{PRODUCT_NAME}}-{模块A}-PRD-V1.md      │ Module (3) — 可选，按模块
+│   │   ├── {{PRODUCT_NAME}}-{模块A}-Stitch设计提示词.md │
+│   │   └── {{PRODUCT_NAME}}-{模块A}-UI设计说明-V1.md    ─┘
 │   └── ...
 │
 ├── 其他/                                 ─┐
@@ -95,9 +114,9 @@ Replace placeholders in **both filenames and content**. Root keeps one `6、` fi
 
 | Scope | Count | Templates | Naming Pattern |
 |:---|:---:|:---|:---|
-| Root | 10 | [`templates/root/`](templates/root/) | `{序号}、{Name}-{文档名}.md` |
-| Version (`{V}/`) | 7 | [`templates/version/`](templates/version/) | `{序号}、{Name}-{文档名}-{V}.md` |
-| Module (optional) | 3 per module | [`templates/module/`](templates/module/) | `{Name}-{模块简称}-{类型}-{V}.md` |
+| Root | 10 | [`templates/root/`](templates/root/) | `{{MODULE_INDEX}}、{{PRODUCT_NAME}}-{文档名}.md` |
+| Version (`{{VERSION}}/`) | 7 | [`templates/version/`](templates/version/) | `{{MODULE_INDEX}}、{{PRODUCT_NAME}}-{文档名}-{{VERSION}}.md` |
+| Module (optional) | 3 per module | [`templates/module/`](templates/module/) | `{{PRODUCT_NAME}}-{{MODULE_NAME}}-{类型}-{{VERSION}}.md` |
 | Delivery (optional) | 5 | [`templates/delivery/`](templates/delivery/) | Context-dependent |
 
 ### 3.3 Root 10 Documents — Authoring Chain
@@ -137,35 +156,35 @@ flowchart LR
 
 ### Step 1 — Root Docs
 
-Copy all 10 files from `templates/root/` into the project root. Rename each replacing `{Name}`:
+Copy all 10 files from `templates/root/` into the project root. Rename each replacing `{{PRODUCT_NAME}}`:
 
 ```bash
-# Example: OctoEcom
+# Example: ExampleCommerce
 for f in templates/root/*.md; do
-  name=$(basename "$f" | sed 's/{Name}/OctoEcom/g')
-  cp "$f" "partme-docs/18、OctoEcom/$name"
+  name=$(basename "$f" | sed 's/{{PRODUCT_NAME}}/ExampleCommerce/g')
+  cp "$f" "product-docs/ExampleCommerce/$name"
 done
 ```
 
 ### Step 2 — Version Docs
 
-Create `{V}/` (e.g., `V1/`). Copy 7 files from `templates/version/`. Replace both `{Name}` and `{V}` in filenames and content.
+Create `{{VERSION}}/` (e.g., `V1/`). Copy 7 files from `templates/version/`. Replace both `{{PRODUCT_NAME}}` and `{{VERSION}}` in filenames and content.
 
 ### Step 3 — Module Docs (optional)
 
-For each functional module, create `{V}/{序号}、{模块名}/`. Copy 3 files from `templates/module/`. Replace `{Name}`, `{模块简称}`, and `{V}`.
+For each functional module, create `{{VERSION}}/{{MODULE_INDEX}}、{{MODULE_NAME}}/`. Copy 3 files from `templates/module/`. Replace `{{PRODUCT_NAME}}`, `{{MODULE_NAME}}`, and `{{VERSION}}`.
 
-Example (OctoEcom V1 商品采集):
+Example (ExampleCommerce V1 商品采集):
 ```
 V1/1、商品采集/
-├── OctoEcom-商品采集-PRD-V1.md
-├── OctoEcom-商品采集-Stitch设计提示词.md
-└── OctoEcom-商品采集-UI设计说明-V1.md
+├── ExampleCommerce-商品采集-PRD-V1.md
+├── ExampleCommerce-商品采集-Stitch设计提示词.md
+└── ExampleCommerce-商品采集-UI设计说明-V1.md
 ```
 
 ### Step 4 — Delivery Docs (optional)
 
-Copy `templates/delivery/` into `其他/` or a dedicated delivery folder. Replace `{Name}` and dates.
+Copy `templates/delivery/` into `其他/` or a dedicated delivery folder. Replace `{{PRODUCT_NAME}}` and dates.
 
 ### Step 5 — Special Directories
 
@@ -179,22 +198,20 @@ Run the validation checklist (Section 7).
 
 ## 5. Quality Standards
 
-### 5.1 Content Depth Benchmarks
+### 5.1 Evidence-Oriented Quality Gates
 
-Based on OctoEcom and OpenEcom production documents:
+Line counts, table counts, and diagram counts are diagnostics, not acceptance gates. A document is complete when it enables the next decision or delivery step with traceable evidence.
 
-| 文档 | 目标行数 | 最少 Mermaid | 最少表格 | 关键质量标志 |
-|:---|:---:|:---:|:---:|:---|
-| 1、命名与品牌 | 100–120 | 1 | 2 | 品牌关系图、Open/商业对照表 |
-| 2、术语表 | 100–160 | 0 | 8+ | 按层/域分类、中英对照、缩略词 |
-| 3、市场分析 | 160–220 | 1–3 | 10+ | TAM 数据源注释、SWOT 表、竞品矩阵 |
-| 4、可行性分析 | 180–230 | 2–3 | 10+ | 可行性评级图例、分层评估、风险总表 |
-| 5、技术方案 | 260–400 | 3–4 | 9+ | 代码示例、Gantt 路线、部署拓扑 |
-| 6、版本规划 | 200–340 | 2–3 | 5+ | 版本功能矩阵、定价表、发布策略 |
-| 7、领域模型 | 300–410 | 7–9 | 7+ | classDiagram 每聚合、事件表、仓储接口 |
-| 8、系统架构 | 400–510 | 7–14 | 9+ | 分层 subgraph、序列图、状态机 |
-| 9、视觉DNA | 250–300 | 0–1 | 12+ | ASCII 线框、CSS 变量、色值表 |
-| 10、功能菜单 | 400–560 | 3–5 | 20+ | mindmap 全景、功能枚举、优先级统计 |
+| Dimension | Required outcome |
+|:---|:---|
+| Scope | Audience, ownership, included/excluded scope, and upstream/downstream boundaries are explicit |
+| Evidence | External claims include source, date, and confidence; repository claims point to files, APIs, tests, or runtime evidence |
+| Decisions | Alternatives, decision, rationale, constraints, and reversal conditions are recorded |
+| Consistency | Terms, versions, timelines, menu names, APIs, states, and acceptance criteria agree across documents |
+| Delivery | Each requirement has verifiable acceptance criteria; architecture/UI sections cover failure, empty, loading, permission, and rollback states where applicable |
+| Honesty | Confirmed facts, inferences, assumptions, and TBD items are distinguishable |
+
+Use [`references/quality-rubric.md`](references/quality-rubric.md) for scoring. Add diagrams and tables only when they make a relationship or comparison materially clearer.
 
 ### 5.2 Universal Document Structure
 
@@ -202,12 +219,12 @@ Based on OctoEcom and OpenEcom production documents:
 
 **文档头部**:
 ```markdown
-# {Name} 文档标题
+# {{PRODUCT_NAME}} 文档标题
 
 > **文档说明**：一句话说明文档用途与范围。
 >
 > **版本**：V1.0.0
-> **最后更新**：{YYYY-MM-DD}
+> **最后更新**：{{DATE}}
 ```
 
 **文档尾部**:
@@ -215,8 +232,8 @@ Based on OctoEcom and OpenEcom production documents:
 ---
 
 **文档版本**：V1.0.0
-**创建日期**：{YYYY-MM-DD}
-**最后更新**：{YYYY-MM-DD}
+**创建日期**：{{DATE}}
+**最后更新**：{{DATE}}
 **文档状态**：✅ 待评审
 ```
 
@@ -250,69 +267,59 @@ Based on OctoEcom and OpenEcom production documents:
 - Root has **one** file numbered `6、` (产品与版本规划). Detailed feature lists are embedded in `10、功能菜单与版本规划`.
 - Don't reorganize special directories (`demo/`, `assets/`, `.stitch/`, `stitch_*`, `实施指南/`) unless the user explicitly requests it.
 - Delivery templates are optional and do **not** occupy root-level standard sequence numbers.
-- When a product has open-source + commercial dual-track (e.g., OpenEcom/OctoEcom), each track gets its own full 10-doc set with cross-references.
+- When a product has open-source + commercial dual-track (e.g., ExampleCommerce-Open/ExampleCommerce), each track gets its own full 10-doc set with cross-references.
 
 ---
 
 ## 7. Validation Checklist
 
+Run the bundled structural validator from the skill directory:
+
+```bash
+python3 scripts/validate_templates.py
 ```
-Doc Validation:
-- [ ] Root contains exactly 10 standard files (1–10)
-- [ ] Each file starts with H1 + blockquote doc description
-- [ ] Each file ends with version/date/status footer
-- [ ] ## section numbering is sequential (no gaps, no duplicates)
-- [ ] ### sub-sections use parent number prefix (e.g., ## 3 → ### 3.1)
-- [ ] Mermaid diagrams render without syntax errors
-- [ ] Cross-document references resolve to existing files
-- [ ] Timeline dates are consistent across Doc 3, 5, 6, 10
-- [ ] Terminology matches Doc 2 definitions
-- [ ] Version folder contains exactly 7 standard files with {V} suffix
-- [ ] Module folders have PRD / Stitch / UI triplet (if applicable)
-- [ ] 技术调研/ and 其他/ do not contain root-level standard docs
-- [ ] No sequence numbers 1–7 used for non-standard docs in version folders
+
+For generated standalone architecture documents, validate filenames before delivery:
+
+```bash
+python3 scripts/validate_architecture_filenames.py \
+  docs/ExamplePlatform-Architecture.md \
+  docs/ExamplePlatform-Architecture.zh_CN.md
 ```
+
+Then review semantic consistency that cannot be reduced to file counts:
+
+- [ ] Target facts are evidence-backed; examples remain labeled examples
+- [ ] Root/version/module/delivery responsibilities do not duplicate ownership
+- [ ] Non-applicable dual-track, DDD/COLA, Agent, SaaS, CLI/IM, mobile, or enterprise sections were removed or adapted
+- [ ] Timeline dates agree across market, technology, version, and menu documents
+- [ ] Terminology agrees with the glossary; menu, route, API, and state names agree across PRD/UI/architecture
+- [ ] Requirements have observable acceptance criteria and failure/permission/empty/loading states where relevant
+- [ ] No resolved passwords, tokens, private paths, or private product/repository names were introduced
+- [ ] Standalone architecture filenames match `*-Architecture.md` or `*-Architecture.zh_CN.md`
 
 ---
 
 ## 8. Template Inventory
 
-| Template | Location | Lines | Mermaid | Key Sections |
-|:---|:---|:---:|:---:|:---|
-| 命名与品牌说明 | `templates/root/1、命名与品牌说明.md` | ~120 | 1 | 品牌定位、命名由来、产品边界、核心公式、品牌家族 |
-| 术语表与词汇表 | `templates/root/2、术语表与词汇表.md` | ~150 | 0 | 文档信息、产品/架构/业务/平台/治理术语、缩略词 |
-| 市场与商业分析 | `templates/root/3、市场与商业分析.md` | ~220 | 3 | 市场机会、TAM/SAM/SOM、竞品矩阵、SWOT、商业模式、定价 |
-| 技术与可行性分析 | `templates/root/4、技术与可行性分析.md` | ~230 | 3 | 分层评估、安全合规、性能扩展、风险总表、结论 |
-| 技术方案与路线 | `templates/root/5、技术方案与路线.md` | ~300 | 4 | 技术选型、分层方案、ADR、分阶段路线、部署、监控 |
-| 产品与版本规划 | `templates/root/6、产品与版本规划.md` | ~240 | 3 | 产品定位、版本矩阵、路线图、定价、发布策略、成功指标 |
-| 领域模型设计 | `templates/root/7、领域模型设计.md` | ~350 | 9 | 战略设计、统一语言、聚合设计、领域事件、仓储接口 |
-| 系统架构设计 | `templates/root/8、系统架构设计.md` | ~400 | 8 | 分层架构、DDD/COLA、数据流、安全、部署、扩展机制 |
-| 视觉与交互DNA | `templates/root/9、视觉与交互DNA规范.md` | ~280 | 1 | 设计原则、色彩、字体、布局、组件、动效、暗色、无障碍 |
-| 功能菜单与版本规划 | `templates/root/10、功能菜单与版本规划.md` | ~450 | 5 | 全景、菜单结构、功能明细、版本分布、用户旅程、功能清单 |
+| Group | Location | Count | Main responsibility |
+|:---|:---|:---:|:---|
+| Product baseline | `templates/root/` | 10 | Brand, terminology, market, technology, roadmap, domain, architecture, design DNA, and product-wide IA |
+| Version delivery | `templates/version/` | 7 | Research, analysis, version architecture, scope, PRD, menu, and UI decisions |
+| Module detail | `templates/module/` | 3 | Module-specific PRD, design-generation prompt, and UI specification |
+| Engineering delivery | `templates/delivery/` | 5 | Technical breakdown, test handoff/result, release, and operations |
+| Project entry point | `templates/readme/` | 5 + 7 Rust profiles | Java, Rust, plugin, and skill-ecosystem direct-use templates, a complete reference, and composable Rust domain coverage |
+| Architecture design | `templates/architecture/` | 1 + 7 profile documents | Complete architecture contract plus runtime, plugin, edge, event, AI, and control-plane profiles |
+
+The original 25 lifecycle templates intentionally retain detailed reusable content and labeled full examples. The README family adds four type-specific templates plus one complete reference; the Rust template adds seven composable profile documents. The architecture family adds one complete master template and seven profile documents. Do not replace any of them with short empty shells.
 
 ---
 
 ## 9. Related Skills
 
-- [`documentation-builder`](../dev-utils-skills/documentation-builder): General doc writing and formatting conventions
-- [`api-doc-generator`](api-doc-generator): OpenAPI and API documentation generation
+- [`doc-coauthoring`](../doc-coauthoring/SKILL.md): Interview-driven collaborative document drafting
+- [`api-doc-generator`](../api-doc-generator/SKILL.md): Source/OpenAPI-driven API documentation
 
-## FAQ
+## 10. Completion Contract
 
-**Q1: 如何快速上手此技能？**
-A: 参考上方的快速开始章节，按步骤操作即可。
-
-**Q2: 遇到版本不兼容问题怎么办？**
-A: 检查依赖版本，使用 lock 文件锁定，参考常见陷阱章节。
-
-**Q3: 如何在生产环境使用？**
-A: 参考最佳实践章节，确保配置正确，做好监控和日志。
-
-**Q4: 性能如何优化？**
-A: 参考性能优化相关文档，使用缓存、索引等手段。
-
-**Q5: 如何贡献或反馈问题？**
-A: 在 GitHub 仓库提交 Issue 或 Pull Request。
-
-**Q6: 是否支持中文？**
-A: 支持中文文档和中文注释，详见国内适配章节。
+Before reporting completion, state which template groups were used, which optional patterns were removed, which claims remain assumptions/TBD, and which validation commands passed. For standalone architecture outputs, report the filename validation result. If the target repository could not be inspected, say so explicitly rather than presenting example content as confirmed facts.

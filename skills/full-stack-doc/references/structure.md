@@ -1,6 +1,6 @@
 # Document Structure Reference
 
-Detailed file listings, naming conventions, cross-reference rules, and quality metrics for the PartMe/Octo documentation standard. This file is loaded on-demand when agents need exact filenames, mapping details, or validation rules.
+Detailed file listings, naming conventions, cross-reference rules, and quality metrics for the general product documentation standard. This file is loaded on-demand when agents need exact filenames, mapping details, or validation rules.
 
 ## Contents
 
@@ -8,6 +8,7 @@ Detailed file listings, naming conventions, cross-reference rules, and quality m
 - [Version directory: 7 standard docs](#version-directory-7-standard-docs)
 - [Module directory: 3 docs per module](#module-directory-3-docs-per-module)
 - [Delivery templates: 5 optional docs](#delivery-templates-5-optional-docs)
+- [Architecture output filenames](#architecture-output-filenames)
 - [Special directories](#special-directories)
 - [Cross-document dependency map](#cross-document-dependency-map)
 - [Mermaid diagram type guide](#mermaid-diagram-type-guide)
@@ -18,54 +19,72 @@ Detailed file listings, naming conventions, cross-reference rules, and quality m
 
 ## Root directory: 10 standard docs
 
-Path: `{项目根}/`
+Path: `{{DOC_ROOT}}/`
 
 | # | Filename | Template | Primary Concern |
 |:---:|:---|:---|:---|
-| 1 | `1、{Name}-命名与品牌说明.md` | [`templates/root/1、命名与品牌说明.md`](../templates/root/1、命名与品牌说明.md) | 品牌口径、命名、边界 |
-| 2 | `2、{Name}-术语表与词汇表.md` | [`templates/root/2、术语表与词汇表.md`](../templates/root/2、术语表与词汇表.md) | 统一语言、中英对照 |
-| 3 | `3、{Name}-市场与商业分析.md` | [`templates/root/3、市场与商业分析.md`](../templates/root/3、市场与商业分析.md) | 市场规模、竞品、商业模式 |
-| 4 | `4、{Name}-技术与可行性分析.md` | [`templates/root/4、技术与可行性分析.md`](../templates/root/4、技术与可行性分析.md) | 技术评估、风险、POC |
-| 5 | `5、{Name}-技术方案与路线.md` | [`templates/root/5、技术方案与路线.md`](../templates/root/5、技术方案与路线.md) | 技术选型、ADR、里程碑 |
-| 6 | `6、{Name}-产品与版本规划.md` | [`templates/root/6、产品与版本规划.md`](../templates/root/6、产品与版本规划.md) | 版本矩阵、定价、发布 |
-| 7 | `7、{Name}-领域模型设计.md` | [`templates/root/7、领域模型设计.md`](../templates/root/7、领域模型设计.md) | DDD 限界上下文、聚合 |
-| 8 | `8、{Name}-系统架构设计.md` | [`templates/root/8、系统架构设计.md`](../templates/root/8、系统架构设计.md) | 分层架构、部署、安全 |
-| 9 | `9、{Name}-视觉与交互DNA规范.md` | [`templates/root/9、视觉与交互DNA规范.md`](../templates/root/9、视觉与交互DNA规范.md) | 色彩、字体、组件、动效 |
-| 10 | `10、{Name}-功能菜单与版本规划.md` | [`templates/root/10、功能菜单与版本规划.md`](../templates/root/10、功能菜单与版本规划.md) | 导航、功能清单、优先级 |
+| 1 | `1、{{PRODUCT_NAME}}-命名与品牌说明.md` | [`templates/root/1、命名与品牌说明.md`](../templates/root/1、命名与品牌说明.md) | 品牌口径、命名、边界 |
+| 2 | `2、{{PRODUCT_NAME}}-术语表与词汇表.md` | [`templates/root/2、术语表与词汇表.md`](../templates/root/2、术语表与词汇表.md) | 统一语言、中英对照 |
+| 3 | `3、{{PRODUCT_NAME}}-市场与商业分析.md` | [`templates/root/3、市场与商业分析.md`](../templates/root/3、市场与商业分析.md) | 市场规模、竞品、商业模式 |
+| 4 | `4、{{PRODUCT_NAME}}-技术与可行性分析.md` | [`templates/root/4、技术与可行性分析.md`](../templates/root/4、技术与可行性分析.md) | 技术评估、风险、POC |
+| 5 | `5、{{PRODUCT_NAME}}-技术方案与路线.md` | [`templates/root/5、技术方案与路线.md`](../templates/root/5、技术方案与路线.md) | 技术选型、ADR、里程碑 |
+| 6 | `6、{{PRODUCT_NAME}}-产品与版本规划.md` | [`templates/root/6、产品与版本规划.md`](../templates/root/6、产品与版本规划.md) | 版本矩阵、定价、发布 |
+| 7 | `7、{{PRODUCT_NAME}}-领域模型设计.md` | [`templates/root/7、领域模型设计.md`](../templates/root/7、领域模型设计.md) | DDD 限界上下文、聚合 |
+| 8 | `8、{{PRODUCT_NAME}}-Architecture.zh_CN.md` | [`templates/root/8、系统架构设计.md`](../templates/root/8、系统架构设计.md) | 分层架构、部署、安全 |
+| 9 | `9、{{PRODUCT_NAME}}-视觉与交互DNA规范.md` | [`templates/root/9、视觉与交互DNA规范.md`](../templates/root/9、视觉与交互DNA规范.md) | 色彩、字体、组件、动效 |
+| 10 | `10、{{PRODUCT_NAME}}-功能菜单与版本规划.md` | [`templates/root/10、功能菜单与版本规划.md`](../templates/root/10、功能菜单与版本规划.md) | 导航、功能清单、优先级 |
 
-`10、{Name}-功能菜单与版本规划.md` includes the full detailed feature list section. The old standalone `6、{Name}-详细功能清单.md` has been merged.
+`10、{{PRODUCT_NAME}}-功能菜单与版本规划.md` includes the full detailed feature list section. The old standalone `6、{{PRODUCT_NAME}}-详细功能清单.md` has been merged.
 
 ---
 
 ## Version directory: 7 standard docs
 
-Path: `{项目根}/{V}/` (e.g., `V1/`, `V2/`)
+Path: `{{DOC_ROOT}}/{{VERSION}}/` (e.g., `V1/`, `V2/`)
 
 | # | Filename | Template | Primary Concern |
 |:---:|:---|:---|:---|
-| 1 | `1、{Name}-需求调研文档-{V}.md` | [`templates/version/1、需求调研文档.md`](../templates/version/1、需求调研文档.md) | 用户调研、场景分析 |
-| 2 | `2、{Name}-需求分析文档-{V}.md` | [`templates/version/2、需求分析文档.md`](../templates/version/2、需求分析文档.md) | 用户故事、功能规则 |
-| 3 | `3、{Name}-系统架构设计-{V}.md` | [`templates/version/3、系统架构设计.md`](../templates/version/3、系统架构设计.md) | 版本级架构细化 |
-| 4 | `4、{Name}-功能与界面规划-{V}.md` | [`templates/version/4、功能与界面规划.md`](../templates/version/4、功能与界面规划.md) | 模块划分、界面规划 |
-| 5 | `5、{Name}-PRD文档-{V}.md` | [`templates/version/5、PRD文档.md`](../templates/version/5、PRD文档.md) | 需求规格说明 |
-| 6 | `6、{Name}-功能菜单与版本规划-{V}.md` | [`templates/version/6、功能菜单与版本规划.md`](../templates/version/6、功能菜单与版本规划.md) | 版本级菜单与功能 |
-| 7 | `7、{Name}-UI设计说明-{V}.md` | [`templates/version/7、UI设计说明.md`](../templates/version/7、UI设计说明.md) | 页面、组件、动效说明 |
+| 1 | `1、{{PRODUCT_NAME}}-需求调研文档-{{VERSION}}.md` | [`templates/version/1、需求调研文档.md`](../templates/version/1、需求调研文档.md) | 用户调研、场景分析 |
+| 2 | `2、{{PRODUCT_NAME}}-需求分析文档-{{VERSION}}.md` | [`templates/version/2、需求分析文档.md`](../templates/version/2、需求分析文档.md) | 用户故事、功能规则 |
+| 3 | `3、{{PRODUCT_NAME}}-{{VERSION}}-Architecture.zh_CN.md` | [`templates/version/3、系统架构设计.md`](../templates/version/3、系统架构设计.md) | 版本级架构细化 |
+| 4 | `4、{{PRODUCT_NAME}}-功能与界面规划-{{VERSION}}.md` | [`templates/version/4、功能与界面规划.md`](../templates/version/4、功能与界面规划.md) | 模块划分、界面规划 |
+| 5 | `5、{{PRODUCT_NAME}}-PRD文档-{{VERSION}}.md` | [`templates/version/5、PRD文档.md`](../templates/version/5、PRD文档.md) | 需求规格说明 |
+| 6 | `6、{{PRODUCT_NAME}}-功能菜单与版本规划-{{VERSION}}.md` | [`templates/version/6、功能菜单与版本规划.md`](../templates/version/6、功能菜单与版本规划.md) | 版本级菜单与功能 |
+| 7 | `7、{{PRODUCT_NAME}}-UI设计说明-{{VERSION}}.md` | [`templates/version/7、UI设计说明.md`](../templates/version/7、UI设计说明.md) | 页面、组件、动效说明 |
 
 Sequence numbers 1–7 are **reserved**. Non-standard docs in version folders must use `8+` or be placed in `其他/`.
+
+## Architecture output filenames
+
+The Markdown filenames inside `templates/` are source-template names. Generated architecture documents must end with one of these exact suffixes:
+
+```text
+<Stem>-Architecture.md
+<Stem>-Architecture.zh_CN.md
+```
+
+For the Chinese lifecycle tree, the generated product and version architecture files are:
+
+```text
+8、{{PRODUCT_NAME}}-Architecture.zh_CN.md
+3、{{PRODUCT_NAME}}-{{VERSION}}-Architecture.zh_CN.md
+```
+
+For standalone or component architecture documents, examples are `{{PROJECT_NAME}}-Architecture.md` and `{{PROJECT_NAME}}-{Component}-Architecture.zh_CN.md`.
 
 ---
 
 ## Module directory: 3 docs per module
 
-Path: `{项目根}/{V}/{序号}、{模块中文名}/`
+Path: `{{DOC_ROOT}}/{{VERSION}}/{{MODULE_INDEX}}、{模块中文名}/`
 
 | File | Template | Purpose |
 |:---|:---|:---|
-| `{Name}-{模块简称}-PRD-{V}.md` | [`templates/module/模块-PRD.md`](../templates/module/模块-PRD.md) | 模块级产品需求文档 |
-| `{Name}-{模块简称}-Stitch设计提示词.md` | [`templates/module/模块-Stitch设计提示词.md`](../templates/module/模块-Stitch设计提示词.md) | AI 设计生成提示词 |
-| `{Name}-{模块简称}-UI设计说明-{V}.md` | [`templates/module/模块-UI设计说明.md`](../templates/module/模块-UI设计说明.md) | UI 页面说明与切图规范 |
+| `{{PRODUCT_NAME}}-{{MODULE_NAME}}-PRD-{{VERSION}}.md` | [`templates/module/模块-PRD.md`](../templates/module/模块-PRD.md) | 模块级产品需求文档 |
+| `{{PRODUCT_NAME}}-{{MODULE_NAME}}-Stitch设计提示词.md` | [`templates/module/模块-Stitch设计提示词.md`](../templates/module/模块-Stitch设计提示词.md) | AI 设计生成提示词 |
+| `{{PRODUCT_NAME}}-{{MODULE_NAME}}-UI设计说明-{{VERSION}}.md` | [`templates/module/模块-UI设计说明.md`](../templates/module/模块-UI设计说明.md) | UI 页面说明与切图规范 |
 
-The Stitch file may omit the `-{V}` suffix per project convention.
+The Stitch file may omit the `-{{VERSION}}` suffix per project convention.
 
 ---
 
@@ -109,6 +128,7 @@ These directories follow their own conventions — do **not** reorganize unless 
 | Doc 6 版本规划 | Doc 3 商业, Doc 5 路线 | 版本节奏对齐商业与技术 |
 | Doc 7 领域模型 | Doc 2 术语, Doc 6 功能边界 | 聚合名称须在术语表中定义 |
 | Doc 8 系统架构 | Doc 5 技术栈, Doc 7 领域 | 架构承接技术选型与领域划分 |
+| Standalone architecture | Product baseline, source/manifests, protocols, deployment, tests | `templates/architecture/` provides the full system/component contract and optional profiles; link it from Doc 8 when detail should live separately |
 | Doc 9 视觉DNA | Doc 1 品牌气质 | 视觉语言源于品牌 |
 | Doc 10 功能菜单 | Doc 6, Doc 8, Doc 9 | 功能列表对齐版本、架构、UI |
 
@@ -142,20 +162,22 @@ These directories follow their own conventions — do **not** reorganize unless 
 
 ## Quality metrics by document
 
-Based on OctoEcom and OpenEcom production examples:
+Historical line, table, and Mermaid counts are useful only for spotting accidental truncation. They are not quality targets: a short decision record may be complete, while a long document may still be unsupported.
 
-| Doc | Target Lines | Min Mermaid | Min Tables | Must-Have Sections |
-|:---:|:---:|:---:|:---:|:---|
-| 1 | 100–120 | 1 | 2 | 品牌定位、命名由来、产品边界、核心公式、品牌关系 |
-| 2 | 100–160 | 0 | 8 | 文档信息、产品/架构/业务术语、缩略词、使用规则 |
-| 3 | 160–220 | 1 | 10 | 市场机会、TAM/SAM/SOM、竞品矩阵、SWOT、商业模式 |
-| 4 | 180–230 | 2 | 10 | 分层评估（每层一节）、安全合规、风险总表、结论 |
-| 5 | 260–400 | 3 | 9 | 技术选型、分层方案、ADR、Gantt 路线、部署方案 |
-| 6 | 200–340 | 2 | 5 | 产品定位、版本矩阵、路线图、定价、发布策略 |
-| 7 | 300–410 | 7 | 7 | 限界上下文、聚合 classDiagram、事件表、仓储接口 |
-| 8 | 400–510 | 7 | 9 | 分层架构、DDD 映射、数据流、安全、部署架构 |
-| 9 | 250–300 | 0–1 | 12 | 设计原则、色彩、字体、布局、组件、动效、暗色、无障碍 |
-| 10 | 400–560 | 3 | 20 | 全景 mindmap、菜单枚举、功能清单、优先级统计 |
+| Doc | Required outcome |
+|:---:|:---|
+| 1 | Product and brand boundaries are unambiguous; naming rules can be applied consistently |
+| 2 | Product, business, architecture, status, and acronym terms have one canonical meaning |
+| 3 | Market claims expose source, publication date, retrieval date, estimation method, and confidence |
+| 4 | Feasibility conclusions trace to experiments, constraints, costs, risks, or comparable evidence |
+| 5 | Technology decisions record alternatives, rationale, constraints, ADRs, milestones, and rollback points |
+| 6 | Version scope, sequencing, release mode, and success metrics agree with technical capacity |
+| 7 | Domain objects and rules reflect actual complexity; DDD elements are included only when useful |
+| 8 | Component boundaries, dependencies, runtime flows, security, deployment, observability, and failure handling are implementable |
+| 9 | Design tokens, accessibility, component behavior, responsive rules, and interaction states are testable |
+| 10 | Information architecture, permissions, routes, version ownership, and user journeys are internally consistent |
+
+See [`quality-rubric.md`](quality-rubric.md) for the shared evidence rubric and [`applicability.md`](applicability.md) for optional-section rules.
 
 ---
 
