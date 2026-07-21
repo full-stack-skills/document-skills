@@ -1,0 +1,67 @@
+version: 1
+cases:
+  - id: api-doc-openapi-inventory-tests
+    skill: api-doc-generator
+    command:
+      - "{python}"
+      - -m
+      - unittest
+      - discover
+      - -s
+      - skills/api-doc-generator/tests
+      - -p
+      - "test_*.py"
+    assertions:
+      exit_code: 0
+      stderr_contains: ["OK"]
+  - id: processon-offline-client-tests
+    skill: processon-diagram-generator
+    command:
+      - "{python}"
+      - -m
+      - unittest
+      - discover
+      - -s
+      - skills/processon-diagram-generator/tests
+      - -p
+      - "test_*.py"
+    assertions:
+      exit_code: 0
+      stderr_contains: ["OK"]
+  - id: full-stack-doc-template-validator
+    skill: full-stack-doc
+    command: ["{python}", skills/full-stack-doc/scripts/validate_templates.py]
+    assertions:
+      exit_code: 0
+      stdout_contains: ["templates=31", "profiles=14", "errors=0"]
+  - id: full-stack-doc-validator-tests
+    skill: full-stack-doc
+    command:
+      - "{python}"
+      - -m
+      - unittest
+      - discover
+      - -s
+      - skills/full-stack-doc/tests
+      - -p
+      - "test_*.py"
+    assertions:
+      exit_code: 0
+      stderr_contains: ["OK"]
+  - id: full-stack-doc-architecture-filename-validator
+    skill: full-stack-doc
+    command:
+      - "{python}"
+      - skills/full-stack-doc/scripts/validate_architecture_filenames.py
+      - ExamplePlatform-Architecture.md
+      - ExamplePlatform-Architecture.zh_CN.md
+      - --require-pairs
+    assertions:
+      exit_code: 0
+      stdout_contains: ["architecture_files=2", "errors=0"]
+  - id: repository-skill-quality
+    skill: all
+    command: ["{python}", scripts/validate_repository.py]
+    assertions:
+      exit_code: 0
+      stdout_contains: ["skills=8", "errors=0"]

@@ -22,7 +22,7 @@
 
 ## 📖 简介
 
-**文档技能** 是一组 AI 编码智能体技能，属于 [Full Stack Skills](https://github.com/partme-ai/full-stack-skills) 生态，由 [PartMe.AI](https://github.com/partme-ai) 维护。
+**文档技能** 是一组面向 AI 编码智能体的可复用技能，发布于 [Full Stack Skills](https://github.com/full-stack-skills) 生态。
 
 本包包含 **8 个技能**。每个技能是一个独立的 `SKILL.md` 文件，AI 智能体按需加载。
 
@@ -42,14 +42,29 @@ npx skills add full-stack-skills/document-skills --skill <skill-name>
 
 | 技能 | 描述 |
 |------|------|
-| `api-doc-generator` | | |
-| `doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation,... |
-| `full-stack-doc` | > |
-| `mermaid` | 使用 Mermaid 在 Markdown 中生成可渲染图表（```mermaid``` 代码块），适用于流程图/时序图/类图/状态图/ER/Gantt/思维导图/时间线等；当用户提到 Mermaid、Markdown 图表，或需要在... |
-| `plantuml` | 使用 PlantUML 输出 UML/架构图（```plantuml``` 代码块或 .puml，含 @startuml/@enduml），适用于类图/时序图/组件图/部署图/状态图/C4 模型等；当用户明确提到 PlantUML/U... |
-| `processon-diagram-generator` | | |
-| `processon-mindmap` | Provides comprehensive guidance for ProcessOn mind mapping including mind map creation, node management, and collabor... |
-| `technical-blog-doc` | > |
+| `api-doc-generator` | 从 OpenAPI、路由、源码和测试生成可追溯的 API 文档 |
+| `doc-coauthoring` | 协作收集上下文、起草文档并进行独立读者测试 |
+| `full-stack-doc` | 使用生命周期、README、Rust 剖面和完整架构模板族构建详细文档体系 |
+| `mermaid` | 为 Markdown 和 README 生成可直接渲染的 Mermaid 图表 |
+| `plantuml` | 生成精确的 UML、C4 和企业架构图源码 |
+| `processon-diagram-generator` | 通过 ProcessOn API 生成可编辑 DSL 和渲染图片 |
+| `processon-mindmap` | 整理可导入 ProcessOn 的层级化思维导图 |
+| `technical-blog-doc` | 编写有环境记录、验证命令和证据来源的技术教程 |
+
+`full-stack-doc` 保留原有的产品级、版本级、模块级和交付级详细模板，并提供 Java、Rust、插件、技能生态及完整参考 README 模板。Rust 公共模板可组合文件格式、上游兼容、工具箱 Workspace、认证框架、纯设计阶段和多语言布局剖面；完整架构母模板可组合运行时、插件、边缘设备、消息事件、AI/RAG 和可观测控制面剖面。API 文档技能按 OpenAPI、Spring、FastAPI、NestJS、Express 和 Gin 分别加载参考。
+
+## ✅ 质量验证
+
+```bash
+python3 scripts/validate_repository.py
+python3 skills/full-stack-doc/scripts/validate_templates.py
+python3 -m unittest discover -s skills/full-stack-doc/tests -p 'test_*.py'
+python3 -m unittest discover -s skills/api-doc-generator/tests -p 'test_*.py'
+python3 -m unittest discover -s skills/processon-diagram-generator/tests -p 'test_*.py'
+python3 scripts/run_artifact_evals.py
+```
+
+触发正反例与产物回归用例位于 `evals/`。
 
 ## 🤖 支持的智能体
 
@@ -76,7 +91,7 @@ cp -r document-skills/skills/* .claude/skills/
 
 | 资源 | 链接 |
 |------|------|
-| **Full Stack Skills** | [github.com/partme-ai/full-stack-skills](https://github.com/partme-ai/full-stack-skills) |
+| **Full Stack Skills** | [github.com/full-stack-skills](https://github.com/full-stack-skills) |
 | **全部技能组** | [github.com/full-stack-skills](https://github.com/full-stack-skills) |
 | **Agent Skills 规范** | [agentskills.io](https://agentskills.io) |
 | **Skills CLI** | [github.com/vercel-labs/skills](https://github.com/vercel-labs/skills) |

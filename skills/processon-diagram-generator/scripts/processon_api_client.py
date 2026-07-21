@@ -4,15 +4,58 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime
 
-DSL_STREAM_API_URL = "https://smart.processon.com/v1/chat/completion"
-DSL_STREAM_MODEL = "deepseek-v3-2-251201"
-DSL_STREAM_UID = "567890"
+DSL_STREAM_API_URL = os.environ.get(
+    "PROCESSON_DSL_API_URL", "https://smart.processon.com/v1/chat/completion"
+)
+DSL_STREAM_MODEL = os.environ.get("PROCESSON_MODEL", "deepseek-v3-2-251201")
+DSL_STREAM_UID = os.environ.get("PROCESSON_UID", "567890")
 DSL_EDIT_URL = "https://smart.processon.com/editor"
-IMAGE_RENDER_API_URL = "https://smart.processon.com/v1/api/generate/img"
+IMAGE_RENDER_API_URL = os.environ.get(
+    "PROCESSON_RENDER_API_URL", "https://smart.processon.com/v1/api/generate/img"
+)
+
+
+def env_number(name, default, cast):
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        value = cast(raw)
+    except (TypeError, ValueError):
+        return default
+    return value if value >= 0 else default
+
+
+REQUEST_TIMEOUT = env_number("PROCESSON_CONNECT_TIMEOUT", 180.0, float)
+MAX_RETRIES = env_number("PROCESSON_MAX_RETRIES", 2, int)
+RETRYABLE_HTTP_CODES = {429, 500, 502, 503, 504}
+
+
+def open_json_request(url, headers, payload, timeout=None, opener=None, sleeper=None):
+    """POST JSON with bounded retries for transient failures only."""
+    json_payload = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    request = urllib.request.Request(url, data=json_payload, headers=headers, method="POST")
+    timeout = REQUEST_TIMEOUT if timeout is None else timeout
+    opener = opener or urllib.request.urlopen
+    sleeper = sleeper or time.sleep
+
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            return opener(request, timeout=timeout)
+        except urllib.error.HTTPError as exc:
+            if exc.code not in RETRYABLE_HTTP_CODES or attempt >= MAX_RETRIES:
+                raise
+        except (urllib.error.URLError, TimeoutError):
+            if attempt >= MAX_RETRIES:
+                raise
+        sleeper(min(2 ** attempt, 8))
+
+    raise RuntimeError("unreachable retry state")
 
 
 def normalize_title(title):
@@ -154,14 +197,14 @@ def extract_remote_image_urls(content_items):
     return urls
 
 
-def build_final_image_payload(result, diagram_title):
+def build_final_image_payload(result, diagram_title, output_dir=None):
     content = extract_content_items(result)
     if content is None:
         raise ValueError("Invalid image response: missing 'content' array")
 
     normalized_content = normalize_content_items(content)
     remote_image_urls = extract_remote_image_urls(normalized_content)
-    save_result = save_image_content(diagram_title, normalized_content)
+    save_result = save_image_content(diagram_title, normalized_content, output_dir=output_dir)
     saved_paths = save_result["saved_paths"]
 
     output_content = []
@@ -215,7 +258,7 @@ def build_image_failure_payload(message):
     }
 
 
-def generate_diagram(prompt, title=None, stream_style=None, output_mode=None, auto_render=True):
+def generate_diagram(prompt, title=None, stream_style=None, output_mode=None, auto_render=True, output_dir=None):
     output_mode = (output_mode or os.environ.get("PROCESSON_OUTPUT_MODE", "text")).strip().lower()
     stream_style = (stream_style or os.environ.get("PROCESSON_STREAM_STYLE", "host")).strip().lower()
     dsl_event_buffer = ""
@@ -503,11 +546,6 @@ def generate_diagram(prompt, title=None, stream_style=None, output_mode=None, au
                 f"(status={status_code}, content_type={content_type}, body_prefix={snippet!r})"
             ) from exc
 
-    def open_json_request(url, headers, payload, timeout=180):
-        json_payload = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-        request = urllib.request.Request(url, data=json_payload, headers=headers, method="POST")
-        return urllib.request.urlopen(request, timeout=timeout)
-
     def use_markdown_stream():
         return stream_style in ("markdown", "md", "codefence", "code_fence", "fenced")
 
@@ -601,7 +639,7 @@ def generate_diagram(prompt, title=None, stream_style=None, output_mode=None, au
         event_name = None
         event_data_lines = []
 
-        with open_json_request(DSL_STREAM_API_URL, headers, payload, timeout=300) as response:
+        with open_json_request(DSL_STREAM_API_URL, headers, payload) as response:
             for raw_line in response:
                 line = raw_line.decode("utf-8", errors="replace")
                 stripped = line.strip("\r\n")
@@ -742,9 +780,9 @@ def generate_diagram(prompt, title=None, stream_style=None, output_mode=None, au
             
             try:
                 render_payload = build_image_payload(dsl, diagram_type)
-                with open_json_request(IMAGE_RENDER_API_URL, headers, render_payload, timeout=180) as response:
+                with open_json_request(IMAGE_RENDER_API_URL, headers, render_payload) as response:
                     image_result = parse_json_response(response)
-                    final_payload = build_final_image_payload(image_result, title)
+                    final_payload = build_final_image_payload(image_result, title, output_dir=output_dir)
                     if is_event_stream_output():
                         emit_event("image_render_succeeded", text="图片渲染成功")
                     mcp_print(final_payload)
@@ -805,6 +843,11 @@ if __name__ == "__main__":
         dest="auto_render",
         help="Disable automatic image rendering.",
     )
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Directory for rendered images (default: ./outputs/processon)",
+    )
     parser.set_defaults(auto_render=True)
 
     args = parser.parse_args()
@@ -815,4 +858,5 @@ if __name__ == "__main__":
         stream_style=args.stream_style,
         output_mode=args.output_mode,
         auto_render=args.auto_render,
+        output_dir=args.output_dir,
     )

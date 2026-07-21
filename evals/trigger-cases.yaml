@@ -1,0 +1,74 @@
+version: 1
+skills:
+  api-doc-generator:
+    positive:
+      - "扫描当前 Spring Controller 并生成接口文档"
+      - "根据 openapi.yaml 更新 API reference"
+      - "整理 FastAPI 项目的路由、请求和响应模型"
+    negative:
+      - "帮我写一份产品 PRD"
+      - "画一个接口调用时序图"
+      - "写一篇部署教程"
+  doc-coauthoring:
+    positive:
+      - "和我一起起草一份技术决策 RFC"
+      - "帮我完善这份跨团队提案并做读者测试"
+      - "把这些零散背景整理成可评审的设计文档"
+    negative:
+      - "初始化完整产品文档目录"
+      - "从源码生成 API 文档"
+      - "用 Mermaid 画流程图"
+  full-stack-doc:
+    positive:
+      - "为这个新产品初始化完整文档体系"
+      - "新增 V2 文档和订单中心模块 PRD"
+      - "检查当前产品文档目录、编号和链接是否规范"
+    negative:
+      - "只写一篇 SDK 接入教程"
+      - "扫描 Controller 生成接口清单"
+      - "用 PlantUML 画类图"
+  mermaid:
+    positive:
+      - "用 Mermaid 给 README 画登录流程"
+      - "生成一个可在 GitHub 渲染的时序图"
+      - "把这些表关系画成 Mermaid ER 图"
+    negative:
+      - "用 PlantUML 生成 C4 Container 图"
+      - "在 ProcessOn 里生成可编辑流程图"
+      - "帮我写完整产品规划文档"
+  plantuml:
+    positive:
+      - "用 PlantUML 输出组件图"
+      - "生成严格 UML 类图并保存为 .puml"
+      - "为系统创建 C4 Container 图"
+    negative:
+      - "给 README 加一个 Mermaid 流程图"
+      - "用 ProcessOn 在线编辑架构图"
+      - "起草一篇技术博客"
+  processon-diagram-generator:
+    positive:
+      - "使用 ProcessOn 生成可编辑泳道图"
+      - "调用 ProcessOn API 渲染这段流程"
+      - "给我 ProcessOn DSL 和图片链接"
+    negative:
+      - "在 Markdown 里画 Mermaid 图"
+      - "输出一个 .puml 文件"
+      - "只整理思维导图大纲，不需要渲染"
+  processon-mindmap:
+    positive:
+      - "整理成可以导入 ProcessOn 的思维导图"
+      - "把会议记录变成 ProcessOn 层级大纲"
+      - "规划一个 ProcessOn 学习思维导图"
+    negative:
+      - "用 ProcessOn 渲染系统架构图片"
+      - "生成 Mermaid mindmap"
+      - "写一份项目运维手册"
+  technical-blog-doc:
+    positive:
+      - "写一篇可复现的 SDK 集成教程"
+      - "根据当前项目整理部署技术博客"
+      - "写一份包含验证命令和故障排查的工程实践文章"
+    negative:
+      - "初始化十份产品根级文档"
+      - "生成 OpenAPI 接口参考"
+      - "共同起草一份决策提案"

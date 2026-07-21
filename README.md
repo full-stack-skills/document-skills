@@ -22,7 +22,7 @@ English | [简体中文](./README.zh-CN.md)
 
 ## 📖 Introduction
 
-**Documentation Skills** is a curated collection of Agent Skills for AI coding agents, part of the [Full Stack Skills](https://github.com/partme-ai/full-stack-skills) ecosystem maintained by [PartMe.AI](https://github.com/partme-ai).
+**Documentation Skills** is a curated collection of Agent Skills for AI coding agents, published in the [Full Stack Skills](https://github.com/full-stack-skills) ecosystem.
 
 This package includes **8 skills**. Each skill is a self-contained `SKILL.md` file that AI agents load on-demand.
 
@@ -42,14 +42,29 @@ npx skills add full-stack-skills/document-skills --skill <skill-name>
 
 | Skill | Description |
 |-------|-------------|
-| `api-doc-generator` | | |
-| `doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation,... |
-| `full-stack-doc` | > |
-| `mermaid` | 使用 Mermaid 在 Markdown 中生成可渲染图表（```mermaid``` 代码块），适用于流程图/时序图/类图/状态图/ER/Gantt/思维导图/时间线等；当用户提到 Mermaid、Markdown 图表，或需要在... |
-| `plantuml` | 使用 PlantUML 输出 UML/架构图（```plantuml``` 代码块或 .puml，含 @startuml/@enduml），适用于类图/时序图/组件图/部署图/状态图/C4 模型等；当用户明确提到 PlantUML/U... |
-| `processon-diagram-generator` | | |
-| `processon-mindmap` | Provides comprehensive guidance for ProcessOn mind mapping including mind map creation, node management, and collabor... |
-| `technical-blog-doc` | > |
+| `api-doc-generator` | Generate traceable API documentation from OpenAPI, routes, source, and tests |
+| `doc-coauthoring` | Gather context, draft collaboratively, and run independent reader tests |
+| `full-stack-doc` | Build an example-rich documentation system from lifecycle, README, Rust-profile, and complete architecture template families |
+| `mermaid` | Create Mermaid diagrams that render directly in Markdown and README files |
+| `plantuml` | Create precise UML, C4, and enterprise architecture source |
+| `processon-diagram-generator` | Generate editable DSL and rendered images through the ProcessOn API |
+| `processon-mindmap` | Organize a hierarchical mind map ready for ProcessOn |
+| `technical-blog-doc` | Write reproducible technical tutorials with environment, commands, and evidence |
+
+`full-stack-doc` includes the original detailed root, version, module, and delivery templates plus Java, Rust, plugin, skill-ecosystem, and complete-reference README templates. The Rust common template composes with profiles for file formats, upstream parity, toolbox workspaces, authentication frameworks, design-only repositories, and multilingual layouts. Its complete architecture master composes with runtime, plugin, edge, event, AI/RAG, and observability/control-plane profiles. API discovery loads focused guidance for OpenAPI, Spring, FastAPI, NestJS, Express, or Gin.
+
+## ✅ Quality checks
+
+```bash
+python3 scripts/validate_repository.py
+python3 skills/full-stack-doc/scripts/validate_templates.py
+python3 -m unittest discover -s skills/full-stack-doc/tests -p 'test_*.py'
+python3 -m unittest discover -s skills/api-doc-generator/tests -p 'test_*.py'
+python3 -m unittest discover -s skills/processon-diagram-generator/tests -p 'test_*.py'
+python3 scripts/run_artifact_evals.py
+```
+
+Trigger positive/negative cases and artifact regression cases live under `evals/`.
 
 ## 🤖 Supported Agents
 
@@ -76,7 +91,7 @@ For more details, see the [Claude Code Skills Guide](https://code.claude.com/doc
 
 | Resource | Link |
 |----------|------|
-| **Full Stack Skills** | [github.com/partme-ai/full-stack-skills](https://github.com/partme-ai/full-stack-skills) |
+| **Full Stack Skills** | [github.com/full-stack-skills](https://github.com/full-stack-skills) |
 | **All Skill Groups** | [github.com/full-stack-skills](https://github.com/full-stack-skills) |
 | **Agent Skills Spec** | [agentskills.io](https://agentskills.io) |
 | **Skills CLI** | [github.com/vercel-labs/skills](https://github.com/vercel-labs/skills) |

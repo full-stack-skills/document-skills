@@ -1,66 +1,49 @@
 ---
 name: processon-mindmap
-description: Provides comprehensive guidance for ProcessOn mind mapping including mind map creation, node management, and collaboration. Use when the user asks about ProcessOn mind maps, needs to create mind maps, organize ideas, or collaborate on mind maps.
-license: Complete terms in LICENSE.txt
+description: Design a ProcessOn-ready mind-map outline for ideas, requirements, knowledge systems, meeting notes, learning plans, or hierarchical analysis. Use when the user explicitly requests a ProcessOn mind map, editable mind map, or a hierarchical outline intended for ProcessOn. Do not trigger for ordinary diagrams, generic prose outlines, or Mermaid mind maps unless ProcessOn is requested.
 ---
 
-## When to use this skill
+# ProcessOn Mind Maps
 
-Use this skill whenever the user wants to:
-- 用 ProcessOn 画思维导图、大纲与层级结构
-- 节点、样式、协作与导出
+Turn source material into a concise hierarchy that can be recreated or imported in ProcessOn.
 
-## How to use this skill
+## Workflow
 
-1. **操作**：创建思维导图；添加主题与分支、图标与颜色；折叠与展开。
-2. **协作**：分享与评论；多人编辑与版本。
-3. **交付**：导出图片或文件；与文档或演示结合。
+1. Identify the map's central question and intended reader.
+2. Extract major themes and group related facts before naming branches.
+3. Limit the first level to roughly five to nine branches unless the source requires more.
+4. Keep one idea per node and use parallel wording among sibling nodes.
+5. Add priority, status, owner, or relationship markers only when supported by the source.
+6. Deliver the structured outline and state any assumptions or omitted low-value detail.
 
-## Best Practices
+## Structure rules
 
-- 层级清晰、一节点一要点；风格与配色统一。
-- 大图分主题或分页；与评审与迭代流程结合。
+- Use nouns for concept maps and verb phrases for action plans.
+- Keep sibling branches at comparable levels of abstraction.
+- Avoid duplicating the same fact under several branches; use a cross-reference marker when needed.
+- Put evidence, examples, and implementation detail below the concept they support.
+- Split oversized maps into a navigation map plus focused submaps.
+- Preserve the user's terminology and language.
 
-## Keywords
+## Output format
 
-processon, 思维导图, 大纲, 协作
+Default to an indented Markdown outline that is easy to paste or recreate:
 
-## 能力边界
+```markdown
+- 中心主题
+  - 一级主题 A
+    - 要点 A1
+    - 要点 A2
+  - 一级主题 B
+    - 要点 B1
+```
 
-### ✅ 适用场景
-- 当你需要使用此技能对应的技术栈时
-- 当项目需要遵循最佳实践时
-- 当需要快速上手或深入理解核心概念时
+If the user needs a rendered ProcessOn diagram rather than an outline, route to [`../processon-diagram-generator/SKILL.md`](../processon-diagram-generator/SKILL.md) and use its API workflow.
 
-### ⚠️ 需要注意
-- 复杂业务逻辑需要结合具体场景调整
-- 性能优化需要根据实际数据量评估
+## Quality checks
 
-### ❌ 不适用场景
-- 不相关的技术栈或框架
-- 需要完全自定义的特殊场景
-
-## 常见陷阱 (Gotchas)
-
-1. **版本兼容性**：注意框架版本与依赖库的兼容性，不同版本 API 可能有差异
-2. **配置文件格式**：配置文件格式错误是最常见的问题，建议使用编辑器的语法检查
-3. **环境变量**：确保所有必要的环境变量已正确设置，敏感信息不要硬编码
-4. **依赖冲突**：多版本共存时注意依赖冲突，使用 lock 文件锁定版本
-5. **性能陷阱**：大数据量场景下注意性能优化，避免 N+1 查询等常见问题
-
-## 使用流程
-
-### Step 1: 环境准备
-确保开发环境已安装必要的依赖和工具。
-
-### Step 2: 配置初始化
-根据项目需求进行基础配置。
-
-### Step 3: 核心功能使用
-按照示例代码实现核心功能。
-
-### Step 4: 测试验证
-运行测试确保功能正常。
-
-### Step 5: 部署上线
-完成开发后进行部署和监控。
+- The root expresses one clear subject.
+- No branch mixes unrelated concerns.
+- Sibling depth and wording are consistent.
+- The map remains readable without hidden context.
+- Unsupported conclusions are marked as assumptions.
