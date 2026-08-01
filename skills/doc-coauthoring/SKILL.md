@@ -1,4 +1,9 @@
 ---
+slug: doc-coauthoring-partme-ai
+displayName: 协作编写高质量文档：提案、RFC、技术方案、战略与跨团队计划
+version: 1.0.0
+summary: 通过关键问题访谈、证据梳理、结构设计和读者测试，与你共同写出真正能推动评审、决策和执行的提案、RFC、技术规格、战略及跨团队计划。
+license: Apache-2.0
 name: doc-coauthoring
 description: Collaboratively draft, revise, and reader-test substantial documentation such as proposals, RFCs, decision records, technical specifications, strategy documents, and cross-team plans. Use when the user needs help transferring context, shaping an argument, resolving gaps, iterating on an existing document, or validating whether a document works for readers. Use a more specialized document skill when the requested artifact is a product-doc suite, technical tutorial, or API reference.
 ---

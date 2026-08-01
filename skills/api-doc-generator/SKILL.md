@@ -1,4 +1,9 @@
 ---
+slug: api-doc-generator-partme-ai
+displayName: 从代码和 OpenAPI 一键生成 API 文档：接口、参数、鉴权、响应与错误码
+version: 1.0.0
+summary: 自动扫描 OpenAPI、路由、控制器、模型、校验规则和测试，生成可追溯、可核验、可持续更新的完整 API 文档，告别接口遗漏、字段猜测和文档过期。
+license: Apache-2.0
 name: api-doc-generator
 description: Generate or update evidence-backed API documentation from OpenAPI specifications, framework routes, controllers, request/response models, validation rules, and tests. Use when the user explicitly asks for API or interface documentation, route inventory, endpoint reference, OpenAPI-derived docs, or synchronization between code and API docs. Supports OpenAPI-first projects and framework-specific discovery for Spring, FastAPI, NestJS, Express, and Gin; do not use for generic product documentation.
 ---

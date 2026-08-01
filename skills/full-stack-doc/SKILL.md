@@ -1,4 +1,9 @@
 ---
+slug: full-stack-doc-partme-ai
+displayName: 一键编写全套开发文档：产品规划、PRD、架构、UI、版本需求
+version: 3.0.2
+summary: 把零散需求快速沉淀为可执行、可追踪、可交付的完整研发文档体系，内置产品规划、PRD、架构、UI、版本与交付模板，让团队少写重复文档，把时间留给真正的产品与工程决策。
+license: Apache-2.0
 name: full-stack-doc
 description: >
   Scaffold, adapt, validate, and maintain example-rich full-stack product documentation:
