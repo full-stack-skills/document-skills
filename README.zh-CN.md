@@ -2,7 +2,7 @@
 
 # document-skills
 
-**Documentation skills — Mermaid, PlantUML, ProcessOn, API docs, full-stack-doc**
+**Documentation skills — Mermaid, PlantUML、ProcessOn、API 文档、full-stack-doc、MarkItDown（awesome / cli / ocr）**
 
 [![GitHub](https://img.shields.io/badge/github-full--stack--skills%2Fdocument-skills-green.svg)](https://github.com/full-stack-skills/document-skills)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
@@ -24,7 +24,7 @@
 
 **文档技能** 是一组面向 AI 编码智能体的可复用技能，发布于 [Full Stack Skills](https://github.com/full-stack-skills) 生态。
 
-本包包含 **8 个技能**。每个技能是一个独立的 `SKILL.md` 文件，AI 智能体按需加载。
+本包包含 **11 个技能**。每个技能是一个独立的 `SKILL.md` 文件，AI 智能体按需加载。
 
 ## 📦 安装
 
@@ -38,13 +38,16 @@ npx skills add full-stack-skills/document-skills
 npx skills add full-stack-skills/document-skills --skill <skill-name>
 ```
 
-## 🎯 技能列表 (8)
+## 🎯 技能列表 (11)
 
 | 技能 | 描述 |
 |------|------|
 | `api-doc-generator` | 从 OpenAPI、路由、源码和测试生成可追溯的 API 文档 |
 | `doc-coauthoring` | 协作收集上下文、起草文档并进行独立读者测试 |
 | `full-stack-doc` | 使用生命周期、README、Rust 剖面和完整架构模板族构建详细文档体系 |
+| `markitdown-awesome` | MarkItDown 的概览与导航：能力边界、支持格式、三路径决策树（awesome / cli / ocr），并与 textract / unstructured / pandoc / docling / Azure DI / Azure CU 对比选型 |
+| `markitdown-cli` | `markitdown` 命令行的完整使用指南：所有参数（`-o/-x/-m/-c/-d/-e/-p/--use-cu/--cu-endpoint/--cu-analyzer/--cu-file-types/--list-plugins/--keep-data-uris`）、输入输出矩阵、与 shell 工具链集成、Azure 后端切换、排错速查 |
+| `markitdown-ocr` | 通过 `markitdown-ocr` 插件用 LLM Vision（OpenAI 兼容，含 Azure OpenAI / Gemini / 本地 vLLM / Ollama）对 PDF / DOCX / PPTX / XLSX 内嵌图片与扫描页做 OCR：安装、配置、Python API、扫描 PDF 整页回退、各格式差异、自定义 prompt、成本与失败处理 |
 | `mermaid` | 为 Markdown 和 README 生成可直接渲染的 Mermaid 图表 |
 | `plantuml` | 生成精确的 UML、C4 和企业架构图源码 |
 | `processon-diagram-generator` | 通过 ProcessOn API 生成可编辑 DSL 和渲染图片 |

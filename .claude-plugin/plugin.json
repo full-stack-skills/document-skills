@@ -1,7 +1,7 @@
 {
   "name": "document-skills",
-  "version": "1.0.0",
-  "description": "Documentation skills",
+  "version": "1.1.0",
+  "description": "Documentation skills — Mermaid, PlantUML, ProcessOn, API docs, full-stack-doc, MarkItDown (awesome / cli / ocr)",
   "author": {
     "name": "Full Stack Skills"
   },
@@ -12,6 +12,9 @@
     "./skills/api-doc-generator",
     "./skills/doc-coauthoring",
     "./skills/full-stack-doc",
+    "./skills/markitdown-awesome",
+    "./skills/markitdown-cli",
+    "./skills/markitdown-ocr",
     "./skills/mermaid",
     "./skills/plantuml",
     "./skills/processon-diagram-generator",
