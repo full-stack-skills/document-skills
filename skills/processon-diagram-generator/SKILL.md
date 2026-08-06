@@ -10,9 +10,9 @@ Convert an evidence-backed diagram specification into editable DSL and, when req
 ## Routing
 
 - Use this skill only when ProcessOn or hosted editable output is requested.
-- Use [`../mermaid/SKILL.md`](../mermaid/SKILL.md) for ordinary Markdown-native diagrams.
-- Use [`../plantuml/SKILL.md`](../plantuml/SKILL.md) for strict UML, C4, or `.puml` output.
-- Use [`../processon-mindmap/SKILL.md`](../processon-mindmap/SKILL.md) when only a ProcessOn-ready mind-map outline is needed.
+- Use the **`mermaid`** skill for ordinary Markdown-native diagrams. Install with: `npx skills add full-stack-skills/document-skills --skill mermaid`.
+- Use the **`plantuml`** skill for strict UML, C4, or `.puml` output. Install with: `npx skills add full-stack-skills/document-skills --skill plantuml`.
+- Use the **`processon-mindmap`** skill when only a ProcessOn-ready mind-map outline is needed. Install with: `npx skills add full-stack-skills/document-skills --skill processon-mindmap`.
 
 ## Configuration
 

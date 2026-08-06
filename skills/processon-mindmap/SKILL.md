@@ -38,7 +38,7 @@ Default to an indented Markdown outline that is easy to paste or recreate:
     - 要点 B1
 ```
 
-If the user needs a rendered ProcessOn diagram rather than an outline, route to [`../processon-diagram-generator/SKILL.md`](../processon-diagram-generator/SKILL.md) and use its API workflow.
+If the user needs a rendered ProcessOn diagram rather than an outline, hand off to the **`processon-diagram-generator`** skill and use its API workflow. Install with: `npx skills add full-stack-skills/document-skills --skill processon-diagram-generator`.
 
 ## Quality checks
 

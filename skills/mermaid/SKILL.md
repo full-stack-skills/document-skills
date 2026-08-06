@@ -10,8 +10,8 @@ Produce valid Mermaid source that communicates relationships more clearly than p
 ## Routing
 
 - Choose Mermaid by default for Markdown-native diagrams.
-- Choose [`../plantuml/SKILL.md`](../plantuml/SKILL.md) for strict UML notation, detailed C4, or `.puml` output.
-- Choose [`../processon-diagram-generator/SKILL.md`](../processon-diagram-generator/SKILL.md) when the user explicitly wants ProcessOn or hosted editable rendering.
+- Choose the **`plantuml`** skill for strict UML notation, detailed C4, or `.puml` output. Install with: `npx skills add full-stack-skills/document-skills --skill plantuml`.
+- Choose the **`processon-diagram-generator`** skill when the user explicitly wants ProcessOn or hosted editable rendering. Install with: `npx skills add full-stack-skills/document-skills --skill processon-diagram-generator`.
 - Do not ask the user to choose a tool when the context already determines a safe default.
 
 ## Workflow

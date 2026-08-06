@@ -14,9 +14,9 @@ Act as an active writing partner. Adapt the depth of the workflow to the request
 
 ## Route specialized artifacts
 
-- Product documentation suites and PRD hierarchies: [`../full-stack-doc/SKILL.md`](../full-stack-doc/SKILL.md)
-- Technical tutorials and integration articles: [`../technical-blog-doc/SKILL.md`](../technical-blog-doc/SKILL.md)
-- API reference generation: [`../api-doc-generator/SKILL.md`](../api-doc-generator/SKILL.md)
+- Product documentation suites and PRD hierarchies: hand off to the **`full-stack-doc`** skill. Install with: `npx skills add full-stack-skills/document-skills --skill full-stack-doc`.
+- Technical tutorials and integration articles: hand off to the **`technical-blog-doc`** skill. Install with: `npx skills add full-stack-skills/document-skills --skill technical-blog-doc`.
+- API reference generation: hand off to the **`api-doc-generator`** skill. Install with: `npx skills add full-stack-skills/document-skills --skill api-doc-generator`.
 
 Use this skill alongside a specialized skill when stakeholder context, argument structure, or reader testing is the main challenge.
 

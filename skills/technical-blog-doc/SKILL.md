@@ -9,9 +9,9 @@ Write reproducible technical content whose claims, code, commands, and versions 
 
 ## Routing
 
-- Product documentation suite or PRD hierarchy: [`../full-stack-doc/SKILL.md`](../full-stack-doc/SKILL.md)
-- API-only documentation: [`../api-doc-generator/SKILL.md`](../api-doc-generator/SKILL.md)
-- Collaborative proposal/RFC drafting: [`../doc-coauthoring/SKILL.md`](../doc-coauthoring/SKILL.md)
+- Product documentation suite or PRD hierarchy: hand off to the **`full-stack-doc`** skill. Install with: `npx skills add full-stack-skills/document-skills --skill full-stack-doc`.
+- API-only documentation: hand off to the **`api-doc-generator`** skill. Install with: `npx skills add full-stack-skills/document-skills --skill api-doc-generator`.
+- Collaborative proposal/RFC drafting: hand off to the **`doc-coauthoring`** skill. Install with: `npx skills add full-stack-skills/document-skills --skill doc-coauthoring`.
 
 ## Evidence model
 

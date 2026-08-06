@@ -322,8 +322,8 @@ The original 25 lifecycle templates intentionally retain detailed reusable conte
 
 ## 9. Related Skills
 
-- [`doc-coauthoring`](../doc-coauthoring/SKILL.md): Interview-driven collaborative document drafting
-- [`api-doc-generator`](../api-doc-generator/SKILL.md): Source/OpenAPI-driven API documentation
+- **`doc-coauthoring`**: Interview-driven collaborative document drafting. Install with: `npx skills add full-stack-skills/document-skills --skill doc-coauthoring`.
+- **`api-doc-generator`**: Source/OpenAPI-driven API documentation. Install with: `npx skills add full-stack-skills/document-skills --skill api-doc-generator`.
 
 ## 10. Completion Contract
 

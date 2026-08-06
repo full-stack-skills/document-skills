@@ -10,8 +10,8 @@ Produce structurally valid PlantUML with explicit semantics and readable layout.
 ## Routing
 
 - Choose PlantUML for UML, C4, enterprise architecture, or `.puml` output.
-- Choose [`../mermaid/SKILL.md`](../mermaid/SKILL.md) for lightweight diagrams embedded directly in Markdown.
-- Choose [`../processon-diagram-generator/SKILL.md`](../processon-diagram-generator/SKILL.md) when hosted editing or ProcessOn output is explicitly required.
+- Choose the **`mermaid`** skill for lightweight diagrams embedded directly in Markdown. Install with: `npx skills add full-stack-skills/document-skills --skill mermaid`.
+- Choose the **`processon-diagram-generator`** skill when hosted editing or ProcessOn output is explicitly required. Install with: `npx skills add full-stack-skills/document-skills --skill processon-diagram-generator`.
 - Do not ask the user to choose a renderer when the requested notation or target format already determines it.
 
 ## Workflow
