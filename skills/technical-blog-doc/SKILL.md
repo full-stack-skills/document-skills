@@ -1,5 +1,6 @@
 ---
 name: technical-blog-doc
+license: Apache-2.0
 description: Create or revise evidence-backed technical tutorials, integration guides, deployment articles, engineering walkthroughs, and project documentation in Markdown. Use when the user asks for a technical blog post or tutorial that combines concepts, prerequisites, implementation, runnable commands, verification, troubleshooting, and sources. Do not use for a product-documentation suite or API-only reference.
 ---
 

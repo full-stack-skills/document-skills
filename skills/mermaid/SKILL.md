@@ -1,5 +1,6 @@
 ---
 name: mermaid
+license: Apache-2.0
 description: Create or revise Mermaid diagrams that render inside Markdown, README files, GitHub, GitLab, wikis, and documentation sites. Use when the user explicitly requests Mermaid or needs a Markdown-native flowchart, sequence diagram, state diagram, class diagram, ER diagram, journey, Gantt chart, mind map, timeline, or lightweight architecture diagram. Prefer PlantUML for strict UML/C4 deliverables and ProcessOn only when editable hosted output is requested.
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: plantuml
+license: Apache-2.0
 description: Create or revise PlantUML source for precise UML and architecture documentation, including class, sequence, component, deployment, state, activity, use-case, ER, ArchiMate, and C4 diagrams. Use when the user explicitly requests PlantUML, UML, C4, `.puml`, standard UML semantics, or detailed architecture notation. Prefer Mermaid for lightweight Markdown-native diagrams and ProcessOn only for hosted editable rendering.
 ---
 

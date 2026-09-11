@@ -1,5 +1,6 @@
 ---
 name: processon-diagram-generator
+license: Apache-2.0
 description: Generate ProcessOn-compatible editable diagrams and optionally render images through the ProcessOn API. Use when the user explicitly requests ProcessOn, hosted editable diagram output, or API-rendered flowcharts, swimlanes, sequences, architectures, ER diagrams, org charts, timelines, or infographics. Requires PROCESSON_API_KEY for remote generation. Prefer Mermaid for ordinary Markdown-native diagrams and PlantUML for strict UML/C4 source.
 ---
 

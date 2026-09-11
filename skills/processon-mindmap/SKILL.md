@@ -1,5 +1,6 @@
 ---
 name: processon-mindmap
+license: Apache-2.0
 description: Design a ProcessOn-ready mind-map outline for ideas, requirements, knowledge systems, meeting notes, learning plans, or hierarchical analysis. Use when the user explicitly requests a ProcessOn mind map, editable mind map, or a hierarchical outline intended for ProcessOn. Do not trigger for ordinary diagrams, generic prose outlines, or Mermaid mind maps unless ProcessOn is requested.
 ---
 
