@@ -5,14 +5,7 @@ version: 3.0.2
 summary: 把零散需求快速沉淀为可执行、可追踪、可交付的完整研发文档体系，内置产品规划、PRD、架构、UI、版本与交付模板，让团队少写重复文档，把时间留给真正的产品与工程决策。
 license: Apache-2.0
 name: full-stack-doc
-description: >
-  Scaffold, adapt, validate, and maintain example-rich full-stack product documentation:
-  10 product-level documents, 7 version documents, optional module PRD/Stitch/UI
-  triplets, 5 delivery documents, and a detailed project README template family.
-  Use when users ask to initialize a documentation
-  repository, create product or version plans, write PRDs and architecture/UI documents,
-  preserve and adapt detailed examples, audit document structure, or improve an existing
-  product-docs tree, including Chinese requests such as 初始化文档、产品文档、写规划文档.
+description: "Scaffold, adapt, validate, and maintain example-rich full-stack product documentation: 10 product-level documents, 7 version documents, optional module PRD/Stitch/UI triplets, 5 delivery documents, and a detailed project README template family. Use when users ask to initialize a documentation repository, create product or version plans, write PRDs and architecture/UI documents, preserve and adapt detailed examples, audit document structure, or improve an existing product-docs tree, including Chinese requests such as 初始化文档、产品文档、写规划文档."
 ---
 
 # Product Documentation Standard (full-stack-doc v3.0)
