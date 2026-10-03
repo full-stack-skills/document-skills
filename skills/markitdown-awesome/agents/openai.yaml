@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markitdown Awesome"
+  short_description: "介绍 MarkItDown(Microsoft 出品的\"万物转 Markdown\"工具)的能力边界、支持格式、生态(CLI /…"
+  default_prompt: "使用 $markitdown-awesome，围绕“介绍 MarkItDown(Microsoft 出品的\"万物转 Markdown\"工具)的能力边界、支持格式、生态(CLI /”处理我的当前需求。"

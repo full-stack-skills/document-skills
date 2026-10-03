@@ -1,0 +1,4 @@
+interface:
+  display_name: "Markitdown CLI"
+  short_description: "MarkItDown 命令行工具(markitdown 命令)的完整使用指南——所有 CLI 参数(-o/-x/-m/-c/…"
+  default_prompt: "使用 $markitdown-cli，围绕“MarkItDown 命令行工具(markitdown 命令)的完整使用指南——所有 CLI 参数(-o/-x/-m/-c/”处理我的当前需求。"
